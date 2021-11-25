@@ -1,0 +1,70 @@
+{% extends 'base.html' %} {% block content %}
+<h3>SCATTER PLOT:</h3>
+{% if chart %}
+<img src="data:image/png;base64, {{chart|safe}}" />
+{% endif %}
+<br />
+<h3>BAR PLOT:</h3>
+{% if plot %}
+<img src="data:image/png;base64, {{plot|safe}}" />
+{% endif %}
+<br />
+<br />
+<h3>PIE CHART:</h3>
+<div id="piechart"></div>
+
+<script
+  type="text/javascript"
+  src="https://www.gstatic.com/charts/loader.js"
+></script>
+
+<script type="text/javascript">
+  // Load google charts
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  // Draw the chart and set the chart values
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+    ['Analysis', 'Total Percentage'],
+    ['Positive', {{pos}}],
+    ['Negative', {{neg}}],
+    ['Neutral', {{neu}}]
+  ]);
+
+    // Optional; add a title and set the width and height of the chart
+    var options = {'width':750, 'height':500};
+
+    // Display the chart inside the <div> element with id="piechart"
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    chart.draw(data, options);
+  }
+</script>
+<h4>Positive Tweet Percentage:</h4>
+<p>{{posper}}%</p>
+<br />
+<h4>Negative Tweet Percentage:</h4>
+<p>{{negper}}%</p>
+<br />
+<h4>Neutral Tweet Percentage:</h4>
+<p>{{neutper}}%</p>
+
+<style>
+  p,
+  h4,
+  h3 {
+    text-align: center;
+  }
+  h4 {
+    color: red;
+  }
+  p,
+  h3 {
+    font-size: 30px;
+  }
+  h3 {
+    color: green;
+  }
+</style>
+
+{% endblock %}

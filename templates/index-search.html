@@ -1,0 +1,62 @@
+{% extends 'base.html' %} {% block content %}
+<div class="main shifted" id="main">
+        <div class="content">
+          <!-- Content -->
+          <div id="content" class="colM">
+            <div id="content-main">
+            
+              <form
+                method="POST"
+                id="tweet_form"
+                action='result.html'
+              >
+              {% csrf_token %}
+                <br>
+                <div class="form-row">
+                {% csrf_token %}
+                  <label class="required" for="hashtage"><h3>Username:</h3></label>
+                  <input
+                    type="text"
+                    name="hashtage"
+                    autofocus
+                    autocapitalize="none"
+                    autocomplete="username"
+                    maxlength="150"
+                    required
+                    id="hashtage"
+                  />
+                </div>
+
+                <div class="form-row">
+                {% csrf_token %}
+                  <label class="required" for="number"><h3>Number of Tweets:</h3></label>
+                  <input
+                    type="number"
+                    name="number"
+                    autofocus
+                    autocapitalize="none"
+                    autocomplete="username"
+                    maxlength="150"
+                    required
+                    id="number"
+                  />
+                </div>
+                
+                <div class="submit-row">
+                {% csrf_token %}
+                  <button class="btn waves-effect waves-light" type="submit">Analyse
+                    <i class="material-icons right">send</i>
+                </button>
+                </div>
+              </form>
+            </div>
+            
+
+            <br class="clear" />
+          </div>
+          <!-- END Content -->
+          <div id="footer"></div>
+        </div>
+      </div>
+    </div>
+{% endblock %}
