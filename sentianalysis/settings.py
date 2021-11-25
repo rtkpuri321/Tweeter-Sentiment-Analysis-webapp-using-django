@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-6**(8etmcg$9c!-(q$^y_terr6@@&%vxesmhe#qtlmrsd1u8jl
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1','https://tweeter-sentimeter.herokuapp.com/']
 
 
 # Application definition
