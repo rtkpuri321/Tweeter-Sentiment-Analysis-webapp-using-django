@@ -51,8 +51,11 @@ def result(request):
         query = request.POST.get('hashtage')
         query2 = request.POST.get('number')
         try:
-            df = tweety.Analyzer(query, query2)
-
+            df = pd.DataFrame()
+            try:
+                df = tweety.Analyzer(query, query2)
+            except:
+                return render(request, 'namenotexist.html', context={"id": query})
             ans1 = scatterplot(df)
 
             ans2 = barplot(df)
