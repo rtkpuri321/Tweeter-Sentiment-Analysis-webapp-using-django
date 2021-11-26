@@ -27,10 +27,12 @@ def Analyzer(tweeet_id, n):
 
     # for tweet in posts[0:5]:
     #    print(tweet.full_text + '\n')
-    posts = tweepy.Cursor(api.user_timeline, screen_name=tweeet_id, tweet_mode='extended').items(n)
+    posts = api.user_timeline(screen_name=tweeet_id,
+                              count=n, tweet_mode="extended")
     # Create a dataframe with a column called Tweets
 
-    df = pd.DataFrame([" ".join(tweet.full_text.splitlines()) for tweet in posts], columns=['Tweet'])
+    df = pd.DataFrame([tweet.full_text for tweet in posts], columns=['Tweet'])
+    df
 
     def cleaning(text):
         text = re.sub(r'@[A-Za-z0-9]+', '', text)
