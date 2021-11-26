@@ -12,10 +12,10 @@ import tweepy
 
 def Analyzer(tweeet_id, n):
     # VARIABLE THAT CONTAINS THE TWITTER CREDETIALS
-    ACCESS_TOKEN = "1283415560793886720-r2s1cwXb8deElE039pnVa51KYG0jtV"
-    ACCESS_TOKEN_SECRET = "eGUOkGlOZJzZ8gaiIi06vpJrl1tL36FeTWhN7AqwLqsQW"
-    CONSUMER_KEY = "eHr7pzNzExEMecdwka201QKe2"
-    CONSUMER_SECRET = "lGgtiIFQTA1XWuqvnqKoEoUdsPgokYvomAau76WDEcOyVmAcva"
+    ACCESS_TOKEN = ""
+    ACCESS_TOKEN_SECRET = ""
+    CONSUMER_KEY = ""
+    CONSUMER_SECRET = ""
 
     # Create Authentication
     authenticate = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
