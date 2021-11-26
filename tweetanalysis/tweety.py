@@ -12,10 +12,10 @@ import tweepy
 
 def Analyzer(tweeet_id, n):
     # VARIABLE THAT CONTAINS THE TWITTER CREDETIALS
-    ACCESS_TOKEN = ""
-    ACCESS_TOKEN_SECRET = ""
-    CONSUMER_KEY = ""
-    CONSUMER_SECRET = ""
+    ACCESS_TOKEN = "1283415560793886720-r2s1cwXb8deElE039pnVa51KYG0jtV"
+    ACCESS_TOKEN_SECRET = "eGUOkGlOZJzZ8gaiIi06vpJrl1tL36FeTWhN7AqwLqsQW"
+    CONSUMER_KEY = "eHr7pzNzExEMecdwka201QKe2"
+    CONSUMER_SECRET = "lGgtiIFQTA1XWuqvnqKoEoUdsPgokYvomAau76WDEcOyVmAcva"
 
     # Create Authentication
     authenticate = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
@@ -27,12 +27,10 @@ def Analyzer(tweeet_id, n):
 
     # for tweet in posts[0:5]:
     #    print(tweet.full_text + '\n')
-    posts = api.user_timeline(screen_name=tweeet_id,
-                              count=n, tweet_mode="extended")
+    posts = tweepy.Cursor(api.user_timeline, screen_name=tweeet_id, tweet_mode='extended').items(n)
     # Create a dataframe with a column called Tweets
 
-    df = pd.DataFrame([tweet.full_text for tweet in posts], columns=['Tweet'])
-    df
+    df = pd.DataFrame([" ".join(tweet.full_text.splitlines()) for tweet in posts], columns=['Tweet'])
 
     def cleaning(text):
         text = re.sub(r'@[A-Za-z0-9]+', '', text)
